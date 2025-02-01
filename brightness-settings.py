@@ -10,6 +10,10 @@ mp_draw = mp.solutions.drawing_utils
 # Membuka kamera
 cap = cv2.VideoCapture(0)
 
+# Membuat jendela fullscreen
+cv2.namedWindow("Hand Gesture Recognition", cv2.WND_PROP_FULLSCREEN)
+cv2.setWindowProperty("Hand Gesture Recognition", cv2.WND_PROP_FULLSCREEN, cv2.WINDOW_FULLSCREEN)
+
 while True:
     ret, frame = cap.read()
     if not ret:
@@ -35,7 +39,7 @@ while True:
             brightness = int(min(max(distance * 1000, 0), 100))  # Menyusun kecerahan antara 0-100
             sbc.set_brightness(brightness)
 
-    # Menampilkan gambar dengan deteksi tangan
+    # Menampilkan gambar dengan deteksi tangan dalam mode fullscreen
     cv2.imshow("Hand Gesture Recognition", frame)
 
     # Keluar jika menekan 'q'
